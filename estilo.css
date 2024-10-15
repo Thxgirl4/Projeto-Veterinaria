@@ -92,3 +92,21 @@ body {
   color: white;
 
 }
+a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+footer {
+ text-align: center;
+ padding: 15px;
+ color: #fff;
+ position: relative;
+ bottom: 0%;
+ width: 20%;
+ margin-top: auto;
+}
+.footer p{
+    margin: 0;
+}
