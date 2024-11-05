@@ -1,20 +1,9 @@
-const mongoose = require('mongoose');
+import conexao from '../config/conexao.js'
 
-const userSchema = new mongoose.Schema({
-    name: { type:String,
-            required: true,
-    },
-    senha: { type: String,
-             required: true,
-    }
-});
+const Usuario = conexao.Schema({
+    email: {type:String, required:true, unique:true},
+    senha: {type:String, required:true},
+    
+})
 
-const User = mongoose.model('User', userSchema);
-
-const novoUsuario = new User({
-    nome: 'Maicon',
-    senha: 'romero90'
-}) 
-novoUsuario.save()
-.then(() => console.log('Usuario criado com sucesso'))
-.catch(err => console.error('Erro ao salvar usuario', err));
+export default conexao.model('Usuario',Usuario)
