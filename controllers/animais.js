@@ -1,7 +1,7 @@
 import animais from "..models/animais.js";
 
 export async function telaaddanimais(req, res) {
-    res.render('usuario/add')
+    res.render('animais/add')
 }
     
 export async function addanimais(req,res){

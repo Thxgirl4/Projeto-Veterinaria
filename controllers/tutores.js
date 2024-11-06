@@ -5,7 +5,7 @@ export async function telaaddtutores(req, res) {
 }
     
 export async function addtutores(req,res){
-    const usuario = new tutores({
+   try { const usuario = new tutores({
         nome: req.body.nome,
         cpf: req.body.cpf,
         endereco: req.body.endereco,
@@ -15,6 +15,10 @@ export async function addtutores(req,res){
     })
     await tutores.save();
     res.send("Tutor Cadastrado com sucesso!")
+    
+    } catch(err){console.error(error);
+        res.status(500).send("Erro ao cadastrar.");
+    }
 }
 export async function listtutores(req,res){
     
