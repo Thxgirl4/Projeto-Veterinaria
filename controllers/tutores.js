@@ -1,11 +1,11 @@
-import tutores from "..models/tutores.js";
+import Tutores from "../models/Tutores.js";
 
 export async function telaaddtutores(req, res) {
-    res.render('tutores/add')
+    res.render('Tutores/add')
 }
     
 export async function addtutores(req,res){
-   try { const usuario = new tutores({
+   try { const tutores = new Tutores({
         nome: req.body.nome,
         cpf: req.body.cpf,
         endereco: req.body.endereco,
@@ -16,7 +16,8 @@ export async function addtutores(req,res){
     await tutores.save();
     res.send("Tutor Cadastrado com sucesso!")
     
-    } catch(err){console.error(error);
+    } catch(err){
+        console.error(error);
         res.status(500).send("Erro ao cadastrar.");
     }
 }
