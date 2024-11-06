@@ -1,11 +1,12 @@
-import consulta_realizada from "..models/consulta_realizada.js";
+import Consulta_realizada from "../models/Consulta_realizada.js";
 
 export async function telaaddconsultrealiz(req, res) {
     res.render('consulta_realizada/add')
 }
     
 export async function addconsultrealiz(req,res){
-    const usuario = new consulta_realizada({
+    try {
+        const consulta_realizada = new Consulta_realizada({
         codAnimal: req.body.codAnimal,
         especie: req.body.especie,
         diagnostico: req.body.diagnostico,
@@ -15,6 +16,10 @@ export async function addconsultrealiz(req,res){
     })
     await consulta_realizada.save();
     res.send("Consulta realizada salva com sucesso!")
+} catch(err){
+    console.error(error);
+    res.status(500).send("Erro ao salvar.");
+} 
 }
 export async function listconsultrealiz(req,res){
     

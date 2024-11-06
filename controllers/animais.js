@@ -1,20 +1,25 @@
-import animais from "..models/animais.js";
+import Animais from "../models/Animais.js";
 
 export async function telaaddanimais(req, res) {
-    res.render('animais/add')
+    res.render('Animais/add')
 }
     
-export async function addanimais(req,res){
-    const usuario = new animais({
-        nome: req.body.nome,
-        sexo: req.body.sexo,
-        idade: req.body.idade,
-        codEspecie: req.body.codEspecie,
-        raca: req.body.raca,
+export async function addanimais(req, res) {
+    try {
+        const animais = new Animais({ 
+            nome: req.body.nome,
+            codAnimal: req.body.codAnimal,
+            idade: req.body.idade,
+            especie: req.body.especie
+        });
 
-    })
-    await animais.save();
-    res.send("Animal Cadastrado com sucesso!")
+        await animais.save();
+        res.status(201).send("Animal cadastrado com sucesso!");
+
+    } catch (error) {
+        console.error(error); // Log do erro no console para depuração
+        res.status(500).send("Erro ao cadastrar."); // Resposta ao cliente em caso de erro
+    }
 }
 export async function listanimais(req,res){
     
