@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Veterinários</title>
+</head>
+<body>
+    <h1>Lista de Veterinários</h1>
+    <form action="/vet/filtrar" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>CRV</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Veterinario.forEach(veterinario => { %>
+                <tr>
+                    <td><%= veterinario.codVet %></td>
+                    <td><%= veterinario.nome %></td>
+                    <td><%= veterinario.cpf %></td>
+                    <td><%= veterinario.crv %></td>
+                    <td><%= veterinario.celular %></td>
+                    <td><%= veterinario.email %></td>
+                    <td><%= veterinario.endereco %></td>
+                    <td>
+                        <a href="/vet/edit/<%= veterinario._id %>">Editar</a>
+                        <form action="/vet/delet/<%= veterinario._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/vet/add">Adicionar Veterinário</a>
+</body>
+</html>
