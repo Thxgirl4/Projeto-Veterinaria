@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Consulta</title>
+</head>
+<body>
+    <h1>Editar Consulta</h1>
+    <form action="/consulta/edit/<%= consulta._id %>" method="POST">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" value="<%= consulta.descricao %>" required><br>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" value="<%= new Date(consulta.data).toISOString().split('T')[0] %>" required><br>
+
+        <label for="atendente">Atendente:</label>
+        <input type="text" id="atendente" name="atendente" value="<%= consulta.atendente %>" required><br>
+
+        <label for="animal">Animal:</label>
+        <input type="text" id="animal" name="animal" value="<%= consulta.animal %>" required><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/consulta/lst">Voltar para a lista</a>
+</body>
+</html>

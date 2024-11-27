@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Consultas</title>
+</head>
+<body>
+    <h1>Lista de Consultas</h1>
+    <form action="/consulta/filtrar" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por descrição">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Atendente</th>
+                <th>Animal</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% consultas.forEach(consulta => { %>
+                <tr>
+                    <td><%= consulta.descricao %></td>
+                    <td><%= new Date(consulta.data).toLocaleDateString('pt-BR') %></td>
+                    <td><%= consulta.atendente %></td>
+                    <td><%= consulta.animal %></td>
+                    <td>
+                        <a href="/consulta/edit/<%= consulta._id %>">Editar</a>
+                        <form action="/consulta/delet/<%= consulta._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/consulta/add">Adicionar Consulta</a>
+</body>
+</html>
