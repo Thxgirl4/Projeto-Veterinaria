@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Animal</title>
+</head>
+<body>
+    <h1>Adicionar Animal</h1>
+    <form action="/animais/add" method="POST">
+        <label for="codAnimal">Código do Animal:</label>
+        <input type="text" id="codAnimal" name="codAnimal" required><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required><br>
+
+        <label for="especie">Espécie:</label>
+        <input type="text" id="especie" name="especie" required><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="/animais/list">Voltar para a lista</a>
+</body>
+</html>

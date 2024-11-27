@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Consulta Realizada</title>
+</head>
+<body>
+    <h1>Adicionar Consulta Realizada</h1>
+    <form action="/consulta-realizada/add" method="POST">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required><br>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br>
+
+        <label for="atendente">Atendente:</label>
+        <input type="text" id="atendente" name="atendente" required><br>
+
+        <label for="animal">Animal:</label>
+        <input type="text" id="animal" name="animal" required><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="/consulta-realizada/list">Voltar para a lista</a>
+</body>
+</html>
