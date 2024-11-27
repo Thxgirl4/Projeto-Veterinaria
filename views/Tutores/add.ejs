@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Tutor</title>
+</head>
+<body>
+    <h1>Adicionar Tutor</h1>
+    <form action="/tutores/add" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required><br>
+
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" name="celular" required><br>
+
+        <label for="codAnimal">Código do Animal:</label>
+        <input type="text" id="codAnimal" name="codAnimal" required><br>
+
+        <label for="nomeAnimal">Nome do Animal:</label>
+        <input type="text" id="nomeAnimal" name="nomeAnimal" required><br>
+
+        <button type="submit">Cadastrar Tutor</button>
+    </form>
+    <a href="/tutores/lst">Voltar para a lista de tutores</a>
+</body>
+</html>
