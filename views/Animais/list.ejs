@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Animais</title>
+</head>
+<body>
+    <h1>Lista de Animais</h1>
+    <form action="/animais/filtrar" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Espécie</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% animais.forEach(animal => { %>
+                <tr>
+                    <td><%= animal.codAnimal %></td>
+                    <td><%= animal.nome %></td>
+                    <td><%= animal.idade %></td>
+                    <td><%= animal.especie %></td>
+                    <td>
+                        <a href="/animais/edit/<%= animal._id %>">Editar</a>
+                        <form action="/animais/delet/<%= animal._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/animais/add">Adicionar Animal</a>
+</body>
+</html>
