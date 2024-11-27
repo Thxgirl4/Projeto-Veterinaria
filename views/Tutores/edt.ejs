@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tutor</title>
+</head>
+<body>
+    <h1>Editar Tutor</h1>
+    <form action="/tutores/edt/<%= tutor._id %>" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="<%= tutor.nome %>" required><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" value="<%= tutor.cpf %>" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="
