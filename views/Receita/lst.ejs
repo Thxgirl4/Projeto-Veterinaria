@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Receitas</title>
+</head>
+<body>
+    <h1>Lista de Receitas</h1>
+    <form action="/receita/filtrar" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome do animal">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Código do Animal</th>
+                <th>Nome do Animal</th>
+                <th>Medicamentos Prescritos</th>
+                <th>Dosagem</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% receitas.forEach(receita => { %>
+                <tr>
+                    <td><%= receita.codAnimal %></td>
+                    <td><%= receita.nomeAnimal %></td>
+                    <td><%= receita.medicamentosPresc %></td>
+                    <td><%= receita.dosagem %></td>
+                    <td>
+                        <a href="/receita/edit/<%= receita._id %>">Editar</a>
+                        <form action="/receita/delet/<%= receita._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/receita/add">Adicionar Receita</a>
+</body>
+</html>

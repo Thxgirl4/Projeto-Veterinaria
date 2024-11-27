@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Medicamento</title>
+</head>
+<body>
+    <h1>Adicionar Medicamento</h1>
+    <form action="/medicamento/add" method="POST">
+        <label for="nomeMedic">Nome do Medicamento:</label>
+        <input type="text" id="nomeMedic" name="nomeMedic" required><br>
+
+        <label for="fabricante">Fabricante:</label>
+        <input type="text" id="fabricante" name="fabricante" required><br>
+
+        <label for="loteFabric">Lote de Fabricação:</label>
+        <input type="text" id="loteFabric" name="loteFabric" required><br>
+
+        <label for="validade">Validade:</label>
+        <input type="date" id="validade" name="validade" required><br>
+
+        <label for="descriMedic">Descrição:</label>
+        <textarea id="descriMedic" name="descriMedic" required></textarea><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="/medicamento/lst">Voltar para a lista</a>
+</body>
+</html>

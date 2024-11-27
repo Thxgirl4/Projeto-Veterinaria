@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Medicamento</title>
+</head>
+<body>
+    <h1>Editar Medicamento</h1>
+    <form action="/medicamento/edit/<%= medicamento._id %>" method="POST">
+        <label for="nomeMedic">Nome do Medicamento:</label>
+        <input type="text" id="nomeMedic" name="nomeMedic" value="<%= medicamento.nomeMedic %>" required><br>
+
+        <label for="fabricante">Fabricante:</label>
+        <input type="text" id="fabricante" name="fabricante" value="<%= medicamento.fabricante %>" required><br>
+
+        <label for="lote

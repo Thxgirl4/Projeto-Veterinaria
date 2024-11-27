@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Receita</title>
+</head>
+<body>
+    <h1>Adicionar Receita</h1>
+    <form action="/receita/add" method="POST">
+        <label for="codAnimal">Código do Animal:</label>
+        <input type="text" id="codAnimal" name="codAnimal" required><br>
+
+        <label for="nomeAnimal">Nome do Animal:</label>
+        <input type="text" id="nomeAnimal" name="nomeAnimal" required><br>
+
+        <label for="medicamentosPresc">Medicamentos Prescritos:</label>
+        <textarea id="medicamentosPresc" name="medicamentosPresc" required></textarea><br>
+
+        <label for="dosagem">Dosagem:</label>
+        <input type="text" id="dosagem" name="dosagem" required><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="/receita/lst">Voltar para a lista</a>
+</body>
+</html>

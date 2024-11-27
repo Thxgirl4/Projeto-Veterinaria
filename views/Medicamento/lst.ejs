@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Medicamentos</title>
+</head>
+<body>
+    <h1>Lista de Medicamentos</h1>
+    <form action="/medicamento/filtrar" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do Medicamento</th>
+                <th>Fabricante</th>
+                <th>Lote de Fabricação</th>
+                <th>Validade</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% medicamentos.forEach(medicamento => { %>
+                <tr>
+                    <td><%= medicamento.nomeMedic %></td>
+                    <td><%= medicamento.fabricante %></td>
+                    <td><%= medicamento.loteFabric %></td>
+                    <td><%= new Date(medicamento.validade).toLocaleDateString('pt-BR') %></td>
+                    <td><%= medicamento.descriMedic %></td>
+                    <td>
+                        <a href="/medicamento/edit/<%= medicamento._id %>">Editar</a>
+                        <form action="/medicamento/delet/<%= medicamento._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/medicamento/add">Adicionar Medicamento</a>
+</body>
+</html>
