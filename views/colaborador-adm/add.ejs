@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Administrador</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link para um arquivo CSS, se necessário -->
+</head>
+<body>
+    <h1>Adicionar Administrador</h1>
+    <form action="/colaborador-adm/add" method="POST">
+        <label for="codAdm">Código do Administrador:</label>
+        <input type="text" id="codAdm" name="codAdm" required><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required><br>
+
+        <label for="crea">CREA:</label>
+        <input type="text" id="crea" name="crea" required><br>
+
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" name="celular" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required><br>
+
+        <button type="submit">Cadastrar Administrador</button>
+    </form>
+    <a href="/colaborador-adm/lst">Voltar para a lista de administradores</a>
+</body>
+</html>

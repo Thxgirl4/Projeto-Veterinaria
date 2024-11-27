@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Administradores</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link para um arquivo CSS, se necessário -->
+</head>
+<body>
+    <h1>Lista de Administradores</h1>
+    <form action="/colaborador-adm/filtr" method="POST">
+        <input type="text" name="pesquisar" placeholder="Pesquisar por nome">
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>CREA</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Administradores.forEach(administrador => { %>
+                <tr>
+                    <td><%= administrador.codAdm %></td>
+                    <td><%= administrador.nome %></td>
+                    <td><%= administrador.cpf %></td>
+                    <td><%= administrador.crea %></td>
+                    <td><%= administrador.celular %></td>
+                    <td><%= administrador.email %></td>
+                    <td><%= administrador.endereco %></td>
+                    <td>
+                        <a href="/colaborador-adm/edt/<%= administrador._id %>">Editar</a>
+                        <form action="/colaborador-adm/delet/<%= administrador._id %>" method="POST" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/colaborador-adm/add">Adicionar Administrador</a>
+</body>
+</html>
