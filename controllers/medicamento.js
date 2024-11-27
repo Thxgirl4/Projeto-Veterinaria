@@ -21,22 +21,57 @@ export async function addmedicamento(req, res) {
         res.status(500).send("Erro ao salvar a medicação."); 
     }
 }
-export async function listmedicamento(req,res){
-    
+// Lista todos os medicamentos cadastrados
+export async function listmedicamento(req, res) {
+    try {
+        const medicamentos = await Medicamento.find({});
+        res.render('Medicamento/lst', { medicamentos });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao listar medicamentos.");
+    }
 }
 
-export async function filtrmedicamento(req,res){
-    
+// Filtra medicamentos com base em um critério de pesquisa
+export async function filtrmedicamento(req, res) {
+    try {
+        const medicamentos = await Medicamento.find({ nomeMedic: new RegExp(req.body.pesquisar, "i") });
+        res.render('Medicamento/lst', { medicamentos });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao filtrar medicamentos.");
+    }
 }
 
-export async function telaedtmedicamento(req,res){
-    
+// Renderiza a tela para editar um medicamento
+export async function telaedtmedicamento(req, res) {
+    try {
+        const medicamento = await Medicamento.findById(req.params.id);
+        res.render('Medicamento/edt', { medicamento });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao obter medicamento para edição.");
+    }
 }
 
-export async function edtmedicamento(req,res){
-    
+// Edita um medicamento existente
+export async function edtmedicamento(req, res) {
+    try {
+        await Medicamento.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/medicamento/lst');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao editar medicamento.");
+    }
 }
 
-export async function deletmedicamento(req,res){
-    
+// Deleta um medicamento existente
+export async function deletmedicamento(req, res) {
+    try {
+        await Medicamento.findByIdAndDelete(req.params.id);
+        res.redirect('/medicamento/lst');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao deletar medicamento.");
+    }
 }

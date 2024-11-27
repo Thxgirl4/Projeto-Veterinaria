@@ -1,9 +1,11 @@
 import Animais from "../models/Animais.js";
 
+// Renderiza a tela para adicionar um novo animal
 export async function telaaddanimais(req, res) {
-    res.render('Animais/add')
+    res.render('Animais/add');
 }
-    
+
+// Adiciona um novo animal ao banco de dados
 export async function addanimais(req, res) {
     try {
         const animais = new Animais({ 
@@ -17,26 +19,62 @@ export async function addanimais(req, res) {
         res.status(201).send("Animal cadastrado com sucesso!");
 
     } catch (error) {
-        console.error(error); // Log do erro no console para depuração
-        res.status(500).send("Erro ao cadastrar."); // Resposta ao cliente em caso de erro
+        console.error(error);
+        res.status(500).send("Erro ao cadastrar.");
     }
 }
-export async function listanimais(req,res){
-    
+
+// Lista todos os animais cadastrados
+export async function listanimais(req, res) {
+    try {
+        const animais = await Animais.find({});
+        res.render('Animais/list', { animais });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao listar animais.");
+    }
 }
 
-export async function filtranimais(req,res){
-    
+// Filtra animais com base em um critério de pesquisa
+export async function filtranimais(req, res) {
+    try {
+        const animais = await Animais.find({ nome: new RegExp(req.body.pesquisar, "i") });
+        res.render('Animais/list', { animais });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao filtrar animais.");
+    }
 }
 
-export async function telaedtanimais(req,res){
-    
+// Renderiza a tela para editar um animal
+export async function telaedtanimais(req, res) {
+    try {
+        const animal = await Animais.findById(req.params.id);
+        res.render('Animais/edit', { animal });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao obter animal para edição.");
+    }
 }
 
-export async function edtanimais(req,res){
-    
+// Edita um animal existente
+export async function edtanimais(req, res) {
+    try {
+        await Animais.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/animais/list');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao editar animal.");
+    }
 }
 
-export async function deletanimais(req,res){
-    
+// Deleta um animal existente
+export async function deletanimais(req, res) {
+    try {
+        await Animais.findByIdAndDelete(req.params.id);
+        res.redirect('/animais/list');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao deletar animal.");
+    }
 }

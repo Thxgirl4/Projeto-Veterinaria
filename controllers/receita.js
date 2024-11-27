@@ -19,22 +19,46 @@ export async function addreceita(req,res){
         res.status(500).send("Erro ao cadastrar.");
     }
 }
-export async function listreceita(req,res){
-    
+// Filtra receitas com base em um critério de pesquisa
+export async function filtrreceita(req, res) {
+    try {
+        const receitas = await Receita.find({ nomeAnimal: new RegExp(req.body.pesquisar, "i") });
+        res.render('Receita/lst', { receitas });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao filtrar receitas.");
+    }
 }
 
-export async function filtrreceita(req,res){
-    
+// Renderiza a tela para editar uma receita
+export async function telaedtreceita(req, res) {
+    try {
+        const receita = await Receita.findById(req.params.id);
+        res.render('Receita/edt', { receita });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao obter receita para edição.");
+    }
 }
 
-export async function telaedtreceita(req,res){
-    
+// Edita uma receita existente
+export async function edtreceita(req, res) {
+    try {
+        await Receita.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect('/receita/lst');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao editar receita.");
+    }
 }
 
-export async function edtreceita(req,res){
-    
-}
-
-export async function deletreceita(req,res){
-    
+// Deleta uma receita existente
+export async function deletreceita(req, res) {
+    try {
+        await Receita.findByIdAndDelete(req.params.id);
+        res.redirect('/receita/lst');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Erro ao deletar receita.");
+    }
 }
